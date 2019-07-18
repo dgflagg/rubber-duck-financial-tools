@@ -1,0 +1,22 @@
+package info.dgflagg.rubberduck.financialtools;
+
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+public class FinancialController {
+    private static final org.slf4j.Logger log = org.slf4j.LoggerFactory.getLogger(FinancialController.class);
+
+    @RequestMapping("/pay")
+    public Double test(@RequestParam(value="salary") double salary) {
+        log.info("in the test function");
+
+        //federal income tax
+        double federalIncomeTax = salary * .4;
+        double takeHomePay = salary - federalIncomeTax;
+
+        return takeHomePay;
+    }
+
+}

@@ -5,7 +5,7 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>2.1.5.RELEASE</version>
+		<version>2.1.6.RELEASE</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>info.dgflagg</groupId>
@@ -15,7 +15,8 @@
 	<description>Tools every rubber duck needs to assess and improve their personal finances</description>
 
 	<properties>
-		<java.version>1.8</java.version>
+		<java.minor.version>12</java.minor.version>
+		<java.version>1.${java.minor.version}</java.version>
 	</properties>
 
 	<dependencies>
@@ -44,6 +45,42 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
+			<!-- Added for JAVA 12 Support START-->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.8.1</version>
+				<configuration>
+					<release>${java.minor.version}</release>
+				</configuration>
+				<dependencies>
+					<dependency>
+						<!-- update compiler plugin dependency on ASM for Java 12 compatibility -->
+						<groupId>org.ow2.asm</groupId>
+						<artifactId>asm</artifactId>
+						<version>6.2</version>
+					</dependency>
+				</dependencies>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<configuration>
+					<argLine>
+						--illegal-access=permit
+					</argLine>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-failsafe-plugin</artifactId>
+				<configuration>
+					<argLine>
+						--illegal-access=permit
+					</argLine>
+				</configuration>
+			</plugin>
+			<!-- Added for JAVA 12 Support END-->
 		</plugins>
 	</build>
 
