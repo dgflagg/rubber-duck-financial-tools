@@ -6,3 +6,6 @@ mvn clean package
 
 Run locally:
 java -jar target/rubber-duck-financial-tools-0.1.0.jar
+
+Test locally:
+curl http://localhost:8081/pay?salary=50000
