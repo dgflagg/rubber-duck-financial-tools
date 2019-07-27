@@ -1,14 +1,14 @@
 # rubber-duck-financial-tools
 Tools every rubber duck needs to assess and improve their personal finances.
 
-Build jar locally:
-mvn clean package
-
-Build docker image locally:
+# Build docker image locally:
 docker build -t rdft:local .
 
-Run container locally:
+# Run container locally:
 docker run --name rdft --rm -d -p 8081:8081 rdft:local
 
-Test locally:
+# Test running container locally:
 curl http://localhost:8081/pay?salary=50000
+
+
+TODO:
