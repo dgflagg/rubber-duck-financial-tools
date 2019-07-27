@@ -25,10 +25,10 @@ public class FinancialControllerTests {
     public void payShouldReturnSalaryMinusTaxes() throws Exception {
 
         this.mockMvc
-                .perform(get("/pay").param("salary", "100000"))
+                .perform(get("/pay").param("salary", "125000"))
                 .andDo(print())
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$").value(60000));
+                .andExpect(jsonPath("$").value(103753));
     }
 
 }

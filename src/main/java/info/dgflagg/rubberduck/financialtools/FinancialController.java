@@ -9,12 +9,12 @@ public class FinancialController {
     private static final org.slf4j.Logger log = org.slf4j.LoggerFactory.getLogger(FinancialController.class);
 
     @RequestMapping("/pay")
-    public Double test(@RequestParam(value="salary") double salary) {
-        log.info("in the test function");
+    public double test(@RequestParam(value="salary") Double salary) {
+        log.info(String.format("salary: $%f", salary));
 
-        //federal income tax
-        double federalIncomeTax = salary * .4;
-        double takeHomePay = salary - federalIncomeTax;
+        double fit = TaxCalculator.federalIncomeTax(salary, 0);
+
+        double takeHomePay = salary - fit;
 
         return takeHomePay;
     }
