@@ -1,0 +1,10 @@
+---
+
+- debug:
+    msg: "installing the Rubber Duck Financial Tools app on host: '{{ inventory_hostname }}' as user: '{{ ansible_user }}'..."
+
+#TODO: something is fucked up
+- name: pull down the latest RDFT image
+  docker_image:
+    name: dgflagg/rubber-duck-financial-tools
+    source: pull

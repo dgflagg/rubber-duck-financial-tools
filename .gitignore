@@ -16,6 +16,7 @@ HELP.md
 *.iws
 *.iml
 *.ipr
+.idea
 
 ### NetBeans ###
 /nbproject/private/
@@ -30,3 +31,6 @@ HELP.md
 
 
 .mvn
+
+#ansible
+*_inventory.ini

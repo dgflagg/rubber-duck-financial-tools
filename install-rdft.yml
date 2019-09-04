@@ -1,0 +1,6 @@
+---
+- hosts: api_all
+  remote_user: ducky
+
+  roles:
+    - install-rdft
